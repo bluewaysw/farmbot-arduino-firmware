@@ -19,7 +19,7 @@ void setup()
 
   readParameters();
 
-#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
   loadTMC2130drivers();
   startupTmc();
   loadTMC2130parameters();
@@ -56,5 +56,4 @@ void loop()
   checkEmergencyStop();
   checkParamsChanged();
   periodicChecksAndReport();
-
 }

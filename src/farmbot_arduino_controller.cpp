@@ -745,7 +745,7 @@ void startServo()
   ServoControl::getInstance()->attach();
 }
 
-#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
 
 void loadTMC2130drivers()
 {
@@ -812,7 +812,7 @@ void setupTestForDebug()
   //digitalWrite(Z_STEP_PIN, false);
   //digitalWrite(E_STEP_PIN, false);
 
-  //digitalWrite(X_DIR_PIN, false);
+  //digitalWrite(X_DIR_PIN, true);
   //digitalWrite(Y_DIR_PIN, false);
   //digitalWrite(Z_DIR_PIN, false);
   //digitalWrite(E_DIR_PIN, false);
@@ -878,14 +878,14 @@ void runTestForDebug()
 
       if (left) {
         left = false;
-        //digitalWrite(X_DIR_PIN, LOW);
+        digitalWrite(X_DIR_PIN, LOW);
         //digitalWrite(Y_DIR_PIN, LOW);
         //digitalWrite(Z_DIR_PIN, LOW);
         //digitalWrite(E_DIR_PIN, LOW);
       }
       else {
         left = true;
-        //digitalWrite(X_DIR_PIN, HIGH);
+        digitalWrite(X_DIR_PIN, HIGH);
         //digitalWrite(Y_DIR_PIN, HIGH);
         //digitalWrite(Z_DIR_PIN, HIGH);
         //digitalWrite(E_DIR_PIN, HIGH);
@@ -913,7 +913,7 @@ void runTestForDebug()
   bool standStill = false;
   uint8_t status = 0;
   */
-
+  
   Movement::getInstance()->test();
 
 /*

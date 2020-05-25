@@ -49,7 +49,7 @@ void setup();
   void setPinInputOutput();
   void startSerial();
 
-  #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+  #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
   void loadTMC2130drivers();
   void loadTMC2130parameters();
   void startupTmc();

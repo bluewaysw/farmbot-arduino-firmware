@@ -13,10 +13,15 @@
   #define X_ENCDR_B 17
   #define X_ENCDR_A_Q 31
   #define X_ENCDR_B_Q 33
-
+#ifdef RAMPS_V16
+  #define X_CHIP_SELECT 63  // X1_CHIP_SELECT
+#endif
   #define E_STEP_PIN 26
   #define E_DIR_PIN 28
   #define E_ENABLE_PIN 24
+#ifdef RAMPS_V16
+  #define E_CHIP_SELECT 65  // X2_CHIP_SELECT
+#endif
 
   #define Y_STEP_PIN 60
   #define Y_DIR_PIN 61
@@ -27,6 +32,9 @@
   #define Y_ENCDR_B 25
   #define Y_ENCDR_A_Q 35
   #define Y_ENCDR_B_Q 37
+#ifdef RAMPS_V16
+  #define Y_CHIP_SELECT 40  // Y_CHIP_SELECT
+#endif
 
   #define Z_STEP_PIN 46
   #define Z_DIR_PIN 48
@@ -37,6 +45,9 @@
   #define Z_ENCDR_B 29
   #define Z_ENCDR_A_Q 39
   #define Z_ENCDR_B_Q 41
+#ifdef RAMPS_V16
+  #define Z_CHIP_SELECT 42  // Z_CHIP_SELECT
+#endif
 
   #define UTM_C 63
   #define UTM_D 59
@@ -270,7 +281,7 @@
   #define X_ENCDR_B 17
   #define X_ENCDR_A_Q -1    // N/A
   #define X_ENCDR_B_Q -1    // N/A
-
+    
     // X2-AXIS
   #define E_STEP_PIN 15     // X2_STEP_PIN
   #define E_DIR_PIN 30      // X2_DIR_PIN

@@ -71,7 +71,7 @@ void MovementAxis::test()
 
 }
 
-#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
 
 unsigned int MovementAxis::getLostSteps()
 {

@@ -208,7 +208,7 @@ void Movement::loadSettings()
 
 }
 
-#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
   void Movement::initTMC2130()
   {
     axisX.initTMC2130();
@@ -309,7 +309,7 @@ void Movement::loadSettings()
 
 void Movement::test()
 {
-  #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+  #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30) || defined(RAMPS_V16)
   //axisX.enableMotor();
   //axisX.setMotorStep();
   //delayMicroseconds(500);
@@ -317,26 +317,28 @@ void Movement::test()
   //delayMicroseconds(500);
   //if (axisX.stallDetected()) { testA++; }
   //testB++;
-
+      //Serial.print("R99");
+      //Serial.print(" running test ");
+      //Serial.print("\r\n");
   bool stallGuard = false;
   bool standStill = false;
-  uint8_t status_x = 0;
+  uint8_t status_z = 0;
 
   //digitalWrite(X_ENABLE_PIN, LOW);
-  axisX.enableMotor();
+  axisZ.enableMotor();
   //digitalWrite(X_STEP_PIN, HIGH);
-  axisX.setMotorStep();
+  axisZ.setMotorStep();
 
   delayMicroseconds(500);
 
   //digitalWrite(X_STEP_PIN, LOW);
-  axisX.resetMotorStep();
+  axisZ.resetMotorStep();
 
-  TMC2130X.read_STAT();
+  TMC2130Z.read_STAT();
 
-  status_x = TMC2130X.getStatus();
-  stallGuard = status_x & FB_TMC_SPISTATUS_STALLGUARD_MASK ? true : false;
-  standStill = status_x & FB_TMC_SPISTATUS_STANDSTILL_MASK ? true : false;
+  status_z = TMC2130Z.getStatus();
+  stallGuard = status_z & FB_TMC_SPISTATUS_STALLGUARD_MASK ? true : false;
+  standStill = status_z & FB_TMC_SPISTATUS_STANDSTILL_MASK ? true : false;
   if (stallGuard || standStill) {
     testA++;
   }
