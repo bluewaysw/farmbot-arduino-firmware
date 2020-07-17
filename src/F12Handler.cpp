@@ -35,7 +35,7 @@ int F12Handler::execute(Command *command)
   int stepsPerMM = ParameterList::getInstance()->getValue(MOVEMENT_STEP_PER_MM_Y);
   int missedStepsMax = ParameterList::getInstance()->getValue(ENCODER_MISSED_STEPS_MAX_Y);
 
-  #if defined(FARMDUINO_EXP_V20)
+  #if defined(FARMDUINO_EXP_V20)|| defined(RAMPS_V16)
     missedStepsMax += ParameterList::getInstance()->getValue(ENCODER_MISSED_STEPS_DECAY_Y);
   #endif
 
@@ -71,8 +71,6 @@ int F12Handler::execute(Command *command)
 
     if (firstMove)
     {
-      firstMove = false;
-
       // Move to home position. s
       Movement::getInstance()->moveToCoords(X, 0, Z, 0, 0, 0, false, false, false);
       //execution = CurrentState::getInstance()->getLastError();
@@ -110,10 +108,10 @@ int F12Handler::execute(Command *command)
     Serial.print("\r\n");
 
     // Compare postition before and after verify homing, accounting for missed steps detecting stall
-    if (CurrentState::getInstance()->getHomeMissedStepsYscaled() <= (20 + (missedStepsMax * 3) / stepsPerMM))
+    if (CurrentState::getInstance()->getHomeMissedStepsYscaled() <= (20 + (missedStepsMax) / stepsPerMM))
     {
       goodConsecutiveHomings++;
-      if (goodConsecutiveHomings >= 3)
+      if (goodConsecutiveHomings >= 1)
       {
         homingComplete = true;
         CurrentState::getInstance()->setY(0);
@@ -124,6 +122,8 @@ int F12Handler::execute(Command *command)
       delay(500);
       goodConsecutiveHomings = 0;
     }
+
+    firstMove = false;
   }
 
   if (LOGGING)

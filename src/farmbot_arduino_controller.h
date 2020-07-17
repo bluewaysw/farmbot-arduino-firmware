@@ -16,7 +16,7 @@
 #include "MemoryFree.h"
 #include "Debug.h"
 
-#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+#if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)|| defined(RAMPS_V16)
   #include "TMC2130.h"
 #endif
 

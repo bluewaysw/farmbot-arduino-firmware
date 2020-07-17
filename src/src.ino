@@ -25,8 +25,8 @@ void setup()
   loadTMC2130parameters();
 #endif
 
-  //Serial.print("============");
-  //Serial.print(CRLF);
+  Serial.print("============ Jul 20");
+  Serial.print(CRLF);
 
 
   loadMovementSetting();
@@ -41,7 +41,7 @@ void setup()
 
   Serial.print(COMM_REPORT_COMMENT);
   Serial.print(SPACE);
-  Serial.print("ARDUINO STARTUP COMPLETE");
+  Serial.print("ARDUINO STARTUP COMPLETE2");
   Serial.print(CRLF);
 }
 

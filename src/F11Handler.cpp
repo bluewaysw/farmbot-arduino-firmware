@@ -35,7 +35,7 @@ int F11Handler::execute(Command *command)
   int stepsPerMM = ParameterList::getInstance()->getValue(MOVEMENT_STEP_PER_MM_X);
   int missedStepsMax = ParameterList::getInstance()->getValue(ENCODER_MISSED_STEPS_MAX_X);
 
-  #if defined(FARMDUINO_EXP_V20)
+  #if defined(FARMDUINO_EXP_V20)|| defined(RAMPS_V16)
     missedStepsMax += ParameterList::getInstance()->getValue(ENCODER_MISSED_STEPS_DECAY_X);
   #endif
 
@@ -71,8 +71,6 @@ int F11Handler::execute(Command *command)
   {
     if (firstMove)
     {
-      firstMove = false;
-
       // Move to home position
       Movement::getInstance()->moveToCoords(0, Y, Z, 0, 0, 0, false, false, false);
       //execution = CurrentState::getInstance()->getLastError();
@@ -111,10 +109,10 @@ int F11Handler::execute(Command *command)
     Serial.print("\r\n");
 
     // Home position cannot drift more than 5 milimeter otherwise no valid home pos
-    if (CurrentState::getInstance()->getHomeMissedStepsXscaled() < (20 + (missedStepsMax * 3) / stepsPerMM))
+    if (CurrentState::getInstance()->getHomeMissedStepsXscaled() < (20 + (missedStepsMax) / stepsPerMM))
     {
       goodConsecutiveHomings++;
-      if (goodConsecutiveHomings >= 3)
+      if (goodConsecutiveHomings >= 1)
       {
         homingComplete = true;
         CurrentState::getInstance()->setX(0);
@@ -125,6 +123,8 @@ int F11Handler::execute(Command *command)
       delay(500);
       goodConsecutiveHomings = 0;
     }
+
+    firstMove = false;
   }
 
   if (LOGGING)

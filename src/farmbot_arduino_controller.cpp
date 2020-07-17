@@ -285,7 +285,7 @@ void checkParamsChanged()
     }
 
 
-    #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)
+    #if defined(FARMDUINO_EXP_V20) || defined(FARMDUINO_V30)|| defined(RAMPS_V16)
       if (lastTmcParamChangeNr != ParameterList::getInstance()->tmcParamChangeNumber())
       {
         lastTmcParamChangeNr = ParameterList::getInstance()->tmcParamChangeNumber();

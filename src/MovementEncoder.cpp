@@ -284,7 +284,7 @@ float MovementEncoder::getMissedSteps()
 
 void MovementEncoder::checkMissedSteps()
 {
-  #if !defined(FARMDUINO_EXP_V20)
+  #if !defined(FARMDUINO_EXP_V20) && !defined(RAMPS_V16)
     if (encoderEnabled)
     {
       bool stepMissed = false;
