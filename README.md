@@ -13,7 +13,7 @@ Development build instructions
 **This firmware is automatically bundled into [FarmBot OS](https://github.com/FarmBot/farmbot_os).
 The following instructions are for isolated Arduino development only.**
 
-**NOTE:** We tag releases when they are stable. The latest version (on master) is not guaranteed to be stable.
+**NOTE:** We tag releases when they are stable. The latest version (on main) is not guaranteed to be stable.
 
 See [releases](https://github.com/FarmBot/farmbot-arduino-firmware/releases) to find a stable release.
 
@@ -41,7 +41,7 @@ Options for compiling and uploading:
      * Select _Sketch_ > _Export compiled binary_.
      * The `.hex` file will save to the `src` directory.
  * Make (Linux)
-   * [Download the Arduino 1.8.12 IDE](https://www.arduino.cc/download_handler.php?f=/arduino-1.8.12-linux64.tar.xz) and unpack to the `/home` directory.
+   * [Download the Arduino 1.8.13 IDE](https://www.arduino.cc/download_handler.php?f=/arduino-1.8.13-linux64.tar.xz) and unpack to the `/home` directory.
    * `cd farmbot-arduino-firmware`
    * To compile:
      * `make`
