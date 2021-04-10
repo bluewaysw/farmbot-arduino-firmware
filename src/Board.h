@@ -24,6 +24,7 @@
 
   #if FARMBOT_BOARD_ID == 0
     #define RAMPS_V14
+    #define RAMPS_V16
   #elif FARMBOT_BOARD_ID == 1
     #define FARMDUINO_V10
   #elif FARMBOT_BOARD_ID == 2
