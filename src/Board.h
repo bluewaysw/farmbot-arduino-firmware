@@ -16,6 +16,7 @@
 #else
 
   #undef RAMPS_V14
+  #undef RAMPS_V16
   #undef FARMDUINO_V10
   #undef FARMDUINO_V14
   #undef FARMDUINO_V30
@@ -31,6 +32,9 @@
     #define FARMDUINO_EXP_V20
   #elif FARMBOT_BOARD_ID == 4
     #define FARMDUINO_V30
+  #elif FARMBOT_BOARD_ID == 5
+    #define RAMPS_V14
+    #define RAMPS_V16
   #endif
 
 #endif

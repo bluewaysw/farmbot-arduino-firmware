@@ -44,6 +44,7 @@ include lib/EEPROM.Makefile
 
 # Targets
 include lib/targets/ramps_v14.Makefile
+include lib/targets/ramps_v16.Makefile
 include lib/targets/farmduino_v10.Makefile
 include lib/targets/farmduino_k14.Makefile
 include lib/targets/farmduino_k15.Makefile
@@ -55,6 +56,7 @@ include lib/targets/express_k10.Makefile
 	dep_SPI dep_SPI_clean \
 	dep_EEPROM dep_EEPROM_clean \
 	target_ramps_v14 target_ramps_v14_clean \
+	target_ramps_v16 target_ramps_v16_clean \
 	target_farmduino_v10 target_farmduino_v10_clean \
 	target_farmduino_k14 target_farmduino_k14_clean \
 	target_farmduino_k15 target_farmduino_k15_clean \
@@ -64,9 +66,9 @@ DEPS := $(DEP_CORE) $(DEP_SPI) $(DEP_Servo) $(DEP_EEPROM)
 DEPS_OBJ := $(DEP_SPI_OBJ) $(DEP_Servo_OBJ) $(DEP_EEPROM_OBJ)
 DEPS_CFLAGS := $(DEP_CORE_CFLAGS) $(DEP_SPI_CFLAGS) $(DEP_Servo_CFLAGS) $(DEP_EEPROM_CFLAGS)
 
-all: $(BIN_DIR) $(DEPS) target_ramps_v14 target_farmduino_v10 target_farmduino_k14 target_farmduino_k15 target_express_k10 remove_temp
+all: $(BIN_DIR) $(DEPS) target_ramps_v14 target_ramps_v16 target_farmduino_v10 target_farmduino_k14 target_farmduino_k15 target_express_k10 remove_temp
 
-clean: remove_temp target_ramps_v14_clean target_farmduino_v10_clean target_farmduino_k14_clean target_farmduino_k15_clean target_express_k10_clean
+clean: remove_temp target_ramps_v14_clean target_ramps_v16_clean target_farmduino_v10_clean target_farmduino_k14_clean target_farmduino_k15_clean target_express_k10_clean
 
 strings_test: all
 	$(OBJ_COPY) -I ihex $(TARGET_ramps_v14_HEX)     -O binary $(TARGET_ramps_v14_HEX).bin
